@@ -4,7 +4,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule, Routes} from '@angular/router';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
-import {MatButtonModule, MatCardModule, MatIconModule} from '@angular/material';
+import {MatButtonModule, MatIconModule} from '@angular/material';
 import {TranslateModule} from '@ngx-translate/core';
 import 'hammerjs';
 
@@ -53,7 +53,8 @@ const appRoutes: Routes = [
 
         // App modules
         LayoutModule,
-        SampleModule
+        SampleModule,
+
     ],
     bootstrap: [
         AppComponent

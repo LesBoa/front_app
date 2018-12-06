@@ -6,6 +6,7 @@ import { FuseSharedModule } from '@fuse/shared.module';
 
 import { SampleComponent } from './sample.component';
 import {MatCardModule} from "@angular/material";
+import {HeartbeatModule} from "../heartbeat/heartbeat.module";
 
 const routes = [
     {
@@ -24,6 +25,8 @@ const routes = [
         TranslateModule,
 
         MatCardModule,
+
+        HeartbeatModule,
 
         FuseSharedModule
     ],
