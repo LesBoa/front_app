@@ -5,10 +5,11 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { SampleComponent } from './sample.component';
+import {MatCardModule} from "@angular/material";
 
 const routes = [
     {
-        path     : 'sample',
+        path     : '',
         component: SampleComponent
     }
 ];
@@ -21,6 +22,8 @@ const routes = [
         RouterModule.forChild(routes),
 
         TranslateModule,
+
+        MatCardModule,
 
         FuseSharedModule
     ],
