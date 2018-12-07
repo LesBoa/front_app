@@ -1,0 +1,14 @@
+<mat-card class="maps">
+    <div id="title">
+        Location
+    </div>
+    <agm-map [latitude]="latitude" [longitude]="longitude" style="height: 300px" (mapClick)="placeMarker($event)">
+        <agm-marker (mouseOver)="window.open()" (mouseOut)="window.close()" *ngFor="let marker of markers" [latitude]="marker.latitude"
+                    [longitude]="marker.longitude">
+            <agm-info-window #window>
+                <h6>Longitude: {{marker.longitude}}</h6>
+                <h6>Latitude: {{marker.latitude}}</h6>
+            </agm-info-window>
+        </agm-marker>
+    </agm-map>
+</mat-card>
