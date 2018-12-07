@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule, Routes} from '@angular/router';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
@@ -60,7 +60,11 @@ const appRoutes: Routes = [
         SampleModule,
         LoginModule,
         RegisterModule,
+        TodoModule,
 
+    ],
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     ],
     bootstrap: [
         AppComponent
