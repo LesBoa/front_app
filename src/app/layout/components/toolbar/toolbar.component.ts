@@ -27,7 +27,6 @@ export class ToolbarComponent implements OnInit, OnDestroy
     navigation: any;
     selectedLanguage: any;
     userStatusOptions: any[];
-    isPinataOpen: boolean;
 
     // Private
     private _unsubscribeAll: Subject<any>;
@@ -93,7 +92,6 @@ export class ToolbarComponent implements OnInit, OnDestroy
 
         // Set the private defaults
         this._unsubscribeAll = new Subject();
-        this.isPinataOpen = false;
     }
 
     // -----------------------------------------------------------------------------------------------------
@@ -170,9 +168,5 @@ export class ToolbarComponent implements OnInit, OnDestroy
     logout(){
         this.authenticationService.logout();
         this.router.navigate(['/auth/login']);
-    }
-
-    konamiCodeActivated(): void {
-        this.isPinataOpen = !this.isPinataOpen;
     }
 }

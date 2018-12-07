@@ -4,15 +4,12 @@ import { MatButtonModule, MatIconModule, MatMenuModule, MatToolbarModule } from 
 
 import { FuseSearchBarModule, FuseShortcutsModule } from '@fuse/components';
 import { FuseSharedModule } from '@fuse/shared.module';
-import { KonamiModule } from 'ngx-konami';
 
 import { ToolbarComponent } from 'app/layout/components/toolbar/toolbar.component';
-import { PinataComponent } from '../pinata/pinata.component';
 
 @NgModule({
     declarations: [
-        ToolbarComponent,
-        PinataComponent
+        ToolbarComponent
     ],
     imports     : [
         RouterModule,
@@ -23,11 +20,10 @@ import { PinataComponent } from '../pinata/pinata.component';
 
         FuseSharedModule,
         FuseSearchBarModule,
-        FuseShortcutsModule,
-        KonamiModule,
+        FuseShortcutsModule
     ],
     exports     : [
-        ToolbarComponent,
+        ToolbarComponent
     ]
 })
 export class ToolbarModule

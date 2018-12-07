@@ -51,15 +51,4 @@ toolbar {
             height: 56px;
         }
     }
-
-    app-pinata {
-        position: absolute;
-        top: -50px;
-        left: 50%;
-
-        img {
-            transform: translate(-40px, -94px);
-            max-width: none;
-        }
-    }
 }

@@ -16,10 +16,9 @@ import {fuseConfig} from 'app/fuse-config';
 
 import {AppComponent} from 'app/app.component';
 import {LayoutModule} from 'app/layout/layout.module';
-import { SampleModule } from './main/sample/sample.module';
+import {SampleModule} from 'app/main/sample/sample.module';
 import {LoginModule} from "./main/pages/login/login.module";
 import {RegisterModule} from "./main/pages/register/register.module";
-import { VictoryRoyaleModule } from './main/victory-royale/victory-royale.module';
 
 const appRoutes: Routes = [
     {
@@ -30,7 +29,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent,
+        AppComponent
     ],
     imports: [
         BrowserModule,
@@ -59,7 +58,6 @@ const appRoutes: Routes = [
         SampleModule,
         LoginModule,
         RegisterModule,
-        VictoryRoyaleModule,
 
     ],
     bootstrap: [
