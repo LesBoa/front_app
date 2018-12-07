@@ -1,12 +1,8 @@
-# Fuse - Angular
+# Lost in the world (nuit de l'info 2018)
 
-Material Design Admin Template with Angular 7+ and Angular Material
+[![CircleCI](https://circleci.com/gh/LesBoa/front_app/tree/develop.svg?style=svg)](https://circleci.com/gh/LesBoa/front_app/tree/develop)
 
-## The Community
-
-Share your ideas, discuss Fuse and help each other.
-
-[Click here](http://fusetheme.com/community) to see our Community page.
+In order to connect to the server, edit the file in src/env.json to change the url of your server.
 
 ## Development server
 

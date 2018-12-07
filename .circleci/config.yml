@@ -51,7 +51,7 @@ jobs:
                   at: /tmp
             - run:
                   name: Deploy app
-                  command: yarn add netlify-cli && echo "{ \"SERVER_URL\": \"https://http://lost-backend-nuit-info.herokuapp.com\" }" > /tmp/front/env.json  && yarn netlify deploy -d /tmp/front -a $NETLIFY_TOKEN -s $NETLIFY_SITE -p
+                  command: yarn add netlify-cli && echo "{ \"SERVER_URL\": \"https://lost-backend-nuit-info.herokuapp.com\" }" > /tmp/front/env.json  && yarn netlify deploy -d /tmp/front -a $NETLIFY_TOKEN -s $NETLIFY_SITE -p
     docker-build-and-push:
         working_directory: /dockerapp
         docker:
