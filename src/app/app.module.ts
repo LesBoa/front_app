@@ -76,7 +76,7 @@ const appRoutes: Routes = [
         SampleModule,
         LoginModule,
         RegisterModule,
-        MapsModule
+        MapsModule,
         VictoryRoyaleModule,
         LogbookModule,
         StockModule
