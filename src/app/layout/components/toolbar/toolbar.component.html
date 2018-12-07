@@ -1,4 +1,4 @@
-<mat-toolbar class="p-0 mat-elevation-z1">
+<mat-toolbar class="p-0 mat-elevation-z1" (konami)="konamiCodeActivated()">
 
     <div fxFlex fxFill fxLayout="row" fxLayoutAlign="start center">
 
@@ -94,6 +94,7 @@
                     *ngIf="!hiddenNavbar && rightNavbar" (click)="toggleSidebarOpen('navbar')" fxHide.gt-md>
                 <mat-icon class="secondary-text">menu</mat-icon>
             </button>
+            <app-pinata *ngIf="isPinataOpen"></app-pinata>
 
         </div>
 
