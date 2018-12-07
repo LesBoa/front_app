@@ -1,10 +1,23 @@
 <div class="page-layout blank p-24" fusePerfectScrollbar>
 
-    <h2>{{'SAMPLE.HELLO' | translate}}</h2>
+    <h2>Welcome to your dashboard</h2>
 
-    <heartbeat class="heartbeat"></heartbeat>
-    <button routerLink="/auth/login">UN BOUTON</button>
-    <app-rate-glucose></app-rate-glucose>
-    <app-maps></app-maps>
+    <div class="cards">
+        <div class="card">
+            <heartbeat class="heartbeat"></heartbeat>
+        </div>
+        <div class="card">
+            <app-rate-glucose></app-rate-glucose>
+        </div>
+        <div class="card">
+        <app-maps></app-maps>
+        </div>
+        <iframe
+            allow="microphone;"
+            width="350"
+            height="430"
+            src="https://console.dialogflow.com/api-client/demo/embedded/boa_bot">
+        </iframe>
+    </div>
 
 </div>
