@@ -28,7 +28,7 @@ export class LogbookComponent implements OnInit {
 
   getAll(){
     this.logbookService.getAll().subscribe(
-      data => {
+      (data: Logbook[]) => {
         this.logbooks = data;
         console.log("data logbook: "+ this.logbooks[0].title + "   size :"+ this.logbooks.length);
       },

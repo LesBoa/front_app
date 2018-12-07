@@ -37,9 +37,9 @@ export class AuthenticationService {
                 // login successful if there's a jwt token in the respons
                 if (bearerToken) {
                     localStorage.setItem('bearerToken', JSON.stringify(bearerToken));
-                    this.bearerTokenSubject.next(bearerToken);
+                    this.bearerTokenSubject.next(bearerToken.token);
                 }
-                return bearerToken;
+                return bearerToken.token;
             }))
     }
 

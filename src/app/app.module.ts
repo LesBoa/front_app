@@ -81,14 +81,12 @@ const appRoutes: Routes = [
     ],
     providers: [
         {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
+        LogbookService,
+        StockService,
     ],
     bootstrap: [
         AppComponent
     ],
-    providers: [LogbookService,
-        StockService,
-        
-    ]
 })
 export class AppModule {
 }

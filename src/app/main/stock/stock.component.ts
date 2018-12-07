@@ -23,7 +23,7 @@ export class StockComponent implements OnInit {
 
   getAll(){
     this.stockService.getAll().subscribe(
-      data => {
+      (data: Stock[]) => {
         this.stocks = data;
         console.log("data stock: "+ this.stocks[0].name);
       },
