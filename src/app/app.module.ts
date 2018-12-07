@@ -25,6 +25,8 @@ import {RegisterModule} from "./main/pages/register/register.module";
 import {RateGlucoseComponent} from './main/rate-glucose/rate-glucose.component';
 import {JwtInterceptor} from "./main/helpers/jwt.interceptor";
 import { VictoryRoyaleModule } from './main/victory-royale/victory-royale.module';
+import { MapsComponent } from './main/maps/maps.component';
+import {MapsModule} from "./main/maps/maps.module";
 
 
 import { LogbookService } from 'app/main/logbook/logbook.service';
@@ -74,6 +76,7 @@ const appRoutes: Routes = [
         SampleModule,
         LoginModule,
         RegisterModule,
+        MapsModule
         VictoryRoyaleModule,
         LogbookModule,
         StockModule

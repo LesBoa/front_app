@@ -9,6 +9,7 @@ import {MatCardModule} from "@angular/material";
 import {HeartbeatModule} from "../heartbeat/heartbeat.module";
 import {AuthGuard} from "../guards/auth.guard";
 import {RateGlucoseModule} from "../rate-glucose/rate-glucose.module";
+import {MapsModule} from "../maps/maps.module";
 
 const routes = [
     {
@@ -31,6 +32,7 @@ const routes = [
 
         HeartbeatModule,
         RateGlucoseModule,
+        MapsModule,
 
         FuseSharedModule
     ],
