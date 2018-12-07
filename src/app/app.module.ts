@@ -19,6 +19,8 @@ import {LayoutModule} from 'app/layout/layout.module';
 import {SampleModule} from 'app/main/sample/sample.module';
 import {LoginModule} from "./main/pages/login/login.module";
 import {RegisterModule} from "./main/pages/register/register.module";
+import { RateGlucoseComponent } from './main/rate-glucose/rate-glucose.component';
+
 
 const appRoutes: Routes = [
     {
@@ -29,7 +31,7 @@ const appRoutes: Routes = [
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
     ],
     imports: [
         BrowserModule,

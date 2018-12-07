@@ -1,0 +1,58 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:100,400);
+@keyframes load{0%{stroke-dashoffset:0}}
+.progress {
+    position: relative;
+    display: inline-block;
+    padding: 0;
+    text-align: center;
+    &>li {
+        display: inline-block;
+        position: relative;
+        text-align: center;
+        color: #93A2AC;
+        font-family: Lato;
+        font-weight:100;
+        margin: 2rem;
+        &:before {
+            content: attr(data-name);
+            position: absolute;
+            width: 100%;
+            bottom: -2rem;
+            font-weight:400;
+        }
+        &:after {
+            content: attr(data-percent);
+            position: absolute;
+            width: 100%;
+            top: 3.7rem;
+            left: 0;
+            font-size: 2rem;
+            text-align: center;
+            color: black;
+        }
+    }
+    svg {
+        width: 200px;
+        height: 200px;
+        &:nth-child(2) {
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform: rotate(-90deg);
+        }
+        &:nth-child(2) path {
+            fill: none;
+            stroke-width: 25;
+            stroke-dasharray: 629;
+            stroke: #fff;
+            opacity:.9;
+            animation: load 10s;
+        }
+    }
+}
+
+.glucose {
+    position: absolute;
+    width: 280px;
+    height: 300px;
+}
