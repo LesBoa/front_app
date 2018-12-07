@@ -7,10 +7,12 @@ import { FuseSharedModule } from '@fuse/shared.module';
 import { SampleComponent } from './sample.component';
 import {MatCardModule} from "@angular/material";
 import {HeartbeatModule} from "../heartbeat/heartbeat.module";
+import {AuthGuard} from "../guards/auth.guard";
 
 const routes = [
     {
         path     : '',
+        canActivate: [AuthGuard],
         component: SampleComponent
     }
 ];

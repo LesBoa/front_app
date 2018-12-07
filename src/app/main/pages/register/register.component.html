@@ -28,14 +28,23 @@
 
             <div class="title">CREATE AN ACCOUNT</div>
 
-            <form name="registerForm" [formGroup]="registerForm" novalidate>
+            <form name="registerForm" [formGroup]="registerForm" novalidate (ngSubmit)="onSubmit()">
 
                 <mat-form-field appearance="outline">
-                    <mat-label>Name</mat-label>
-                    <input matInput formControlName="name">
+                    <mat-label>FirstName</mat-label>
+                    <input matInput formControlName="firstName">
                     <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
                     <mat-error>
-                        Name is required
+                        FirstName is required
+                    </mat-error>
+                </mat-form-field>
+
+                <mat-form-field appearance="outline">
+                    <mat-label>LastName</mat-label>
+                    <input matInput formControlName="lastName">
+                    <mat-icon matSuffix class="secondary-text">account_circle</mat-icon>
+                    <mat-error>
+                        LastName is required
                     </mat-error>
                 </mat-form-field>
 
@@ -72,15 +81,8 @@
                         Passwords must match
                     </mat-error>
                 </mat-form-field>
-
-                <div class="terms" fxLayout="row" fxLayoutAlign="center center">
-                    <mat-checkbox name="terms" aria-label="Accept" required>
-                        <span>Accept</span>
-                    </mat-checkbox>
-                    <a href="#">terms and conditions</a>
-                </div>
-
-                <button mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT"
+                
+                <button type="submit" mat-raised-button color="accent" class="submit-button" aria-label="CREATE AN ACCOUNT"
                         [disabled]="registerForm.invalid">
                     CREATE AN ACCOUNT
                 </button>
