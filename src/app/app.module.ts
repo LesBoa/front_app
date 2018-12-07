@@ -1,6 +1,6 @@
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule, Routes} from '@angular/router';
 import {MatMomentDateModule} from '@angular/material-moment-adapter';
@@ -19,7 +19,8 @@ import {LayoutModule} from 'app/layout/layout.module';
 import {SampleModule} from 'app/main/sample/sample.module';
 import {LoginModule} from "./main/pages/login/login.module";
 import {RegisterModule} from "./main/pages/register/register.module";
-import { RateGlucoseComponent } from './main/rate-glucose/rate-glucose.component';
+import {RateGlucoseComponent} from './main/rate-glucose/rate-glucose.component';
+import {JwtInterceptor} from "./main/helpers/jwt.interceptor";
 
 
 const appRoutes: Routes = [
@@ -61,6 +62,9 @@ const appRoutes: Routes = [
         LoginModule,
         RegisterModule,
 
+    ],
+    providers: [
+        {provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true},
     ],
     bootstrap: [
         AppComponent
