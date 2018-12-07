@@ -4,8 +4,8 @@ import {BehaviorSubject, Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 
 import {User} from "../models/user.model";
-import {environment} from "../../../environments/environment";
 import {UserService} from "./user.service";
+import {ConfigGetterService} from './config-getter.service';
 
 @Injectable({providedIn: 'root'})
 export class AuthenticationService {
@@ -14,7 +14,8 @@ export class AuthenticationService {
     public currentUser: Observable<User>;
 
     constructor(private http: HttpClient,
-                private userService: UserService) {
+                private userService: UserService,
+                private configGetter: ConfigGetterService) {
         this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
         this.bearerTokenSubject = new BehaviorSubject<string>(JSON.parse(localStorage.getItem(('bearerToken'))));
         this.currentUser = this.currentUserSubject.asObservable();
@@ -29,7 +30,7 @@ export class AuthenticationService {
     }
 
     login(email: string, password: string) {
-        return this.http.post<any>(`${environment.apiUrl}/login`, {email, password})
+        return this.http.post<any>(`${this.configGetter.urlServer}/login`, {email, password})
             .pipe(map(res => {
                 const bearerToken = res;
 
