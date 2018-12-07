@@ -3,6 +3,9 @@ export const locale = {
     data: {
         'SAMPLE': {
             'HELLO': 'Hello, World!'
+        },
+        'RATE_GLUCOSE':{
+            'LABEL': 'Rate Glucose'
         }
     }
 };

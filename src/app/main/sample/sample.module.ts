@@ -8,6 +8,7 @@ import { SampleComponent } from './sample.component';
 import {MatCardModule} from "@angular/material";
 import {HeartbeatModule} from "../heartbeat/heartbeat.module";
 import {AuthGuard} from "../guards/auth.guard";
+import {RateGlucoseModule} from "../rate-glucose/rate-glucose.module";
 
 const routes = [
     {
@@ -29,6 +30,7 @@ const routes = [
         MatCardModule,
 
         HeartbeatModule,
+        RateGlucoseModule,
 
         FuseSharedModule
     ],
