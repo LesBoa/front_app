@@ -9,7 +9,6 @@ import { StockService} from '../stock/stock.service';
   styleUrls: ['./stock.component.scss']
 })
 export class StockComponent implements OnInit {
-  stockFormBuilder:any;
   stockGroup:FormGroup;
 
   stocks:Stock[];
@@ -19,22 +18,30 @@ export class StockComponent implements OnInit {
               private formBuilder: FormBuilder) { }
 
   ngOnInit() {
+      this.stockGroup = this.formBuilder.group({
+          name: ['', Validators.required],
+          quantite: [0, Validators.required],
+          unit: ['', Validators.required],
+      });
+      this.getAll();
   }
 
   getAll(){
     this.stockService.getAll().subscribe(
       (data: Stock[]) => {
         this.stocks = data;
-        console.log("data stock: "+ this.stocks[0].name);
       },
       error => {
-        console.log("error get all stocks");
       }
     )
   }
 
   onSubmit(){
-    this.stockService.createStock(this.name.value, this.quantite.value, this.unit.value);
+      if (this.stockGroup.invalid) {
+          return;
+      } else {
+          this.stockService.createStock(this.name.value, this.quantite.value, this.unit.value);
+      }
   }
 
   delete(stock:Stock){

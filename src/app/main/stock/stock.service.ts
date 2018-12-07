@@ -10,17 +10,18 @@ export class StockService {
   constructor(public http: HttpClient) { }
 
   getAll(){
-    console.log("getAll stock");
-    return this.http.get(environment.apiUrl+'/stock');
+    return this.http.get(environment.apiUrl+'/stocks');
   }
 
   createStock(name: String, quantite: number, unite: String){
-    console.log("create stock "+ name + " "+ quantite + " "+ unite);
-    return this.http.post(environment.apiUrl+'/stock',{name, quantite, unite});
+    return this.http.post(environment.apiUrl+'/stocks',{name, quantite, unite}).subscribe( ret => {
+
+    });
   }
 
   createAction(name: String, variation: number, icon: String){
-    console.log("create action "+ name + " "+ variation + " "+ icon);
-    return this.http.post(environment.apiUrl+'/action',{name, variation, icon});
+    return this.http.post(environment.apiUrl+'/actions',{name, variation, icon}).subscribe( ret => {
+
+    });
   }
 }

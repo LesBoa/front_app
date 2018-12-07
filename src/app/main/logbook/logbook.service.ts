@@ -10,12 +10,12 @@ export class LogbookService {
   constructor(public http: HttpClient) { }
 
   getAll(){
-    console.log("getAll logbook");
     return this.http.get(environment.apiUrl+'/journals');
   }
 
   create(title: String, description: String){
-    console.log("create logbook "+ title + " "+ description);
-    return this.http.post(environment.apiUrl+'/journals',{title, description});
+    return this.http.post(environment.apiUrl+'/journals',{title, description}).subscribe( ret => {
+
+    });
   }
 }

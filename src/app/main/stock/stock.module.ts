@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { FuseSharedModule } from '@fuse/shared.module';
 
 import { StockComponent } from './stock.component';
-import {MatCardModule, MatTableModule} from "@angular/material";
+import {MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatTableModule} from "@angular/material";
 import {HeartbeatModule} from "../heartbeat/heartbeat.module";
 import {AuthGuard} from "../guards/auth.guard";
 
@@ -29,6 +29,9 @@ const routes = [
         TranslateModule,
 
         MatCardModule,
+        MatFormFieldModule,
+        MatInputModule,
+        MatButtonModule,
 
         FuseSharedModule,
         MatTableModule,

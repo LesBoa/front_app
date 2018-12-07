@@ -9,7 +9,6 @@ import { FormGroup, FormControl, FormBuilder, Validators, ReactiveFormsModule  }
   styleUrls: ['./logbook.component.scss']
 })
 export class LogbookComponent implements OnInit {
-  logbookFormBuilder:any;
   logbookGroup:FormGroup;
 
   logbooks: Logbook[];
@@ -38,7 +37,11 @@ export class LogbookComponent implements OnInit {
   }
 
   onSubmit(){
-    this.logbookService.create(this.title.value, this.description.value);
+      if (this.logbookGroup.invalid) {
+          return;
+      } else {
+          this.logbookService.create(this.title.value, this.description.value);
+      }
   }
 
   get title() {
