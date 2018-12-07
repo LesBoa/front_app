@@ -1,0 +1,16 @@
+version: '3'
+services:
+  flow-angular-app:
+    build:
+      context: .
+    ports:
+      - 8090:80
+    networks:
+      - web
+    labels:
+      traefik.enable: true
+      traefik.frontend.rule: Host:app.lost.docker.localhost
+
+networks:
+  web:
+    external: true

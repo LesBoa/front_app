@@ -1,0 +1,98 @@
+version: 2
+jobs:
+    ##########################################################################
+    #  SHARED STEPS
+    ##########################################################################
+    build:
+        docker:
+            - image: circleci/node:8.11
+        working_directory: ~/repo
+        steps:
+            - checkout
+            - restore_cache:
+                  keys:
+                      - $CACHE_VERSION-dependencies-{{ checksum "package.json" }}
+                      # fallback to using the latest cache if no exact match is found
+                      - $CACHE_VERSION-dependencies-
+            - run: yarn install
+            - save_cache:
+                  paths:
+                      - node_modules
+                  key: $CACHE_VERSION-dependencies-{{ checksum "package.json" }}
+    ##########################################################################
+    #  FRONT SPECIFIC
+    ##########################################################################
+    front-build:
+        docker:
+            - image: circleci/node:8.11
+        working_directory: ~/repo
+        steps:
+            - checkout
+            - restore_cache:
+                  key: $CACHE_VERSION-dependencies-{{ checksum "package.json" }}
+            - run: yarn build-prod
+            - run:
+                  name: Copy deployment artifacts to workspace
+                  command: |
+                      cp dist/ /tmp/front -r
+            - store_artifacts:
+                  path: /tmp/front
+            - persist_to_workspace:
+                  root: /tmp
+                  paths:
+                      - front
+    front-deploy:
+        docker:
+            - image: circleci/node:8.11
+        working_directory: ~/deploy
+        steps:
+            # why rebuild something we already tested, rebuilding invalidates any previous confidence?!
+            - attach_workspace:
+                  at: /tmp
+            - run:
+                  name: Deploy app
+                  command: yarn add netlify-cli && yarn netlify deploy -d /tmp/front -a $NETLIFY_TOKEN -s $NETLIFY_SITE -p
+    docker-build-and-push:
+        working_directory: /dockerapp
+        docker:
+            - image: docker:17.05.0-ce-git
+        steps:
+            - checkout
+            - setup_remote_docker
+            - run:
+                  name: Install dependencies
+                  command: |
+                      apk add --no-cache py-pip=9.0.0-r1
+                      pip install docker-compose==1.15.0
+            - run:
+                  name: Build application Docker image
+                  command: |
+                      docker build --cache-from=app -t app .
+            - deploy:
+                  name: Publish application to docker hub
+                  command: |
+                      docker login -e $DOCKER_HUB_EMAIL -u $DOCKER_HUB_USER_ID -p $DOCKER_HUB_PWD
+                      docker tag app $DOCKER_HUB_USER_ID/lost-front:$CIRCLE_BUILD_NUM
+                      docker tag app $DOCKER_HUB_USER_ID/lost-front:latest
+                      docker push $DOCKER_HUB_USER_ID/lost-front:$CIRCLE_BUILD_NUM
+                      docker push $DOCKER_HUB_USER_ID/lost-front:latest
+workflows:
+    version: 2
+    build-test-and-lint:
+        jobs:
+            - build
+            - front-build:
+                  requires:
+                      - build
+            - front-deploy:
+                  requires:
+                      - front-build
+                  filters:
+                      branches:
+                          only: develop
+            - docker-build-and-push:
+                  requires:
+                      - front-build
+                  filters:
+                      branches:
+                          only: develop
